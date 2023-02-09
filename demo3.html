@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <style>
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: 100px;
+        grid-column-gap: 10px;
+      }
+
+      .header {
+        background-color: lightblue;
+        grid-column: 1 / 4;
+      }
+
+      .main {
+        background-color: lightcoral;
+        grid-column: 2;
+      }
+
+      .sidebar-left {
+        background-color: lightgreen;
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .sidebar-right {
+        background-color: lightgreen;
+        grid-column: 3;
+        grid-row: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <header class="header">Header</header>
+      <nav class="sidebar-left">Left Sidebar</nav>
+      <main class="main">Main Content</main>
+      <nav class="sidebar-right">Right Sidebar</nav>
+    </div>
+  </body>
+</html>

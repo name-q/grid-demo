@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <style>
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 70px;
+        overflow: hidden;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .grid-container {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+      .grid-item {
+        background-color: lightblue;
+        text-align: center;
+        padding: 20px;
+      }
+      .menu-button {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        background-color: lightblue;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+      }
+      .show-menu {
+        overflow: visible !important;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-item">Home</div>
+      <div class="grid-item">About</div>
+      <div class="grid-item">Contact</div>
+      <div class="grid-item">Login</div>
+    </div>
+    <div class="menu-button">Show Menu</div>
+
+    <script>
+      const menuButton = document.querySelector(".menu-button");
+      const gridContainer = document.querySelector(".grid-container");
+
+      menuButton.addEventListener("click", function () {
+        gridContainer.classList.toggle("show-menu");
+      });
+    </script>
+  </body>
+</html>

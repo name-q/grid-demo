@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat Room</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f7f7f7;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+        max-width: 800px;
+        margin: 0 auto;
+        height: 100vh;
+      }
+      .panel {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        padding: 20px;
+        background-color: #fff;
+      }
+
+      .chat-container {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        margin-bottom: 20px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+      }
+      .chat-bubble {
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        max-width: 70%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #e6e6e6;
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+      }
+      .chat-bubble img {
+        max-width: 100%;
+        margin-top: 10px;
+        border-radius: 10px;
+      }
+      .chat-bubble.right {
+        align-self: flex-end;
+        background-color: #b3dced;
+      }
+      .chat-bubble.right img {
+        margin-top: 0;
+      }
+      .input-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: auto;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.1);
+      }
+      .input-container input {
+        flex-grow: 1;
+        margin-right: 10px;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        background-color: #f2f2f2;
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+      }
+      .input-container button {
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="panel">
+        <div class="chat-container">
+          <div class="chat-bubble">
+            <p>Hello, how can I help you today?</p>
+          </div>
+          <div class="chat-bubble right">
+            <p>Hi, I'm having some trouble with my account.</p>
+          </div>
+          <div class="chat-bubble">
+            <p>What seems to be the problem?</p>
+          </div>
+          <div class="chat-bubble right">
+            <p>My account was locked and I can't seem to unlock it.</p>
+          </div>
+          <div class="chat-bubble">
+            <p>
+              I see. Can you please provide me with your account information so
+              I can assist you further?
+            </p>
+          </div>
+          <div class="chat-bubble right">
+            <p>
+              Sure, my username is namq-q and my email is 1620206666@qq.com.
+            </p>
+          </div>
+          <div class="chat-bubble">
+            <img src="../asset/image1.jpg" />
+          </div>
+          <div class="chat-bubble right">
+            <p>
+              Sure, my username is namq-q and my email is 1620206666@qq.com.
+            </p>
+            <img src="../asset/image1.jpg" />
+            <p>
+              Sure, my username is namq-q and my email is 1620206666@qq.com.
+            </p>
+          </div>
+        </div>
+        <div class="input-container">
+          <input type="text" placeholder="Type your message..." />
+          <button>Send</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto;
+        grid-gap: 20px;
+      }
+
+      .grid-item {
+        background-color: lightgray;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="grid-item" style="height: 200px; grid-row-start: 1; grid-row-end: 3">
+        <p>Item 1</p>
+      </div>
+      <div class="grid-item" style="height: 300px">
+        <p>Item 2</p>
+      </div>
+      <div class="grid-item" style="height: 150px; grid-row-start: 3; grid-row-end: 5">
+        <p>Item 3</p>
+      </div>
+      <div class="grid-item" style="height: 250px">
+        <p>Item 4</p>
+      </div>
+    </div>
+  </body>
+</html>

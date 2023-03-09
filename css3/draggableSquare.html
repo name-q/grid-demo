@@ -13,10 +13,15 @@
 			background-color: red;
 			cursor: move;
 		}
+		.long {
+			background-color: lightblue;
+			height: 1000vh;
+		}
 	</style>
 </head>
 <body>
 	<div id="box"></div>
+	<div class="long"></div>
 	<script>
 		var box = document.getElementById('box');
 		var isDragging = false;
@@ -48,7 +53,7 @@
 			newX = Math.min(maxX, Math.max(0, newX));
 			newY = Math.min(maxY, Math.max(0, newY));
 
-			box.style.left = newX + 'px';
+			// box.style.left = newX + 'px';
 			box.style.top = newY + 'px';
 		}
 

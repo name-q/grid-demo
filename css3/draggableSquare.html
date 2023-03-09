@@ -1,65 +1,90 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>可拖动方块</title>
-	<style>
-		#box {
-			position: fixed;
-			top: 50%;
-			right: 0;
-			transform: translateY(-50%);
-			width: 100px;
-			height: 100px;
-			background-color: red;
-			cursor: move;
-		}
-		.long {
-			background-color: lightblue;
-			height: 1000vh;
-		}
-	</style>
-</head>
-<body>
-	<div id="box"></div>
-	<div class="long"></div>
-	<script>
-		var box = document.getElementById('box');
-		var isDragging = false;
-		var startX, startY, boxLeft, boxTop;
+  <head>
+    <title>可拖动方块</title>
+    <style>
+      .long {
+        background-color: lightblue;
+        height: 1000vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+    <div class="long"></div>
+    <script>
+      // 注入元素
+      var boxe = document.createElement("div");
+      boxe.id = "box";
+      document.body.appendChild(boxe);
 
-		box.addEventListener('mousedown', startDragging);
-		document.addEventListener('mousemove', drag);
-		document.addEventListener('mouseup', stopDragging);
+      // 注入样式
+      var box = document.getElementById("box");
+      box.style.position = "fixed";
+      box.style.top = "50%";
+      box.style.right = "0";
+      box.style.transform = "translateY(-50%)";
+      box.style.width = "100px";
+      box.style.height = "100px";
+      box.style.backgroundColor = "red";
+      box.style.backgroundSize = "cover";
+      box.style.cursor = "move";
+      // 背景图片
+      const imgUrl =
+        "https://pt-mini.oss-cn-hangzhou.aliyuncs.com/userlogo/4ed1f2a97a957c0148506a1af3.jpg";
+      box.style.backgroundImage = `url(${imgUrl})`;
 
-		function startDragging(e) {
-			isDragging = true;
-			startX = e.clientX;
-			startY = e.clientY;
-			boxLeft = box.offsetLeft;
-			boxTop = box.offsetTop;
-		}
+      // 拖动运行逻辑
+      var isDragging = false;
+      var startX, startY, boxLeft, boxTop;
+      var passClick = false;
 
-		function drag(e) {
-			if (!isDragging) {
-				return;
-			}
+      box.addEventListener("mousedown", startDragging);
+      document.addEventListener("mousemove", drag);
+      document.addEventListener("mouseup", stopDragging);
 
-			var newX = e.clientX - startX + boxLeft;
-			var newY = e.clientY - startY + boxTop;
+      function startDragging(e) {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        boxLeft = box.offsetLeft;
+        boxTop = box.offsetTop;
+      }
 
-			// 确保方块不会超出窗口边界
-			var maxX = window.innerWidth - box.offsetWidth;
-			var maxY = window.innerHeight - box.offsetHeight;
-			newX = Math.min(maxX, Math.max(0, newX));
-			newY = Math.min(maxY, Math.max(0, newY));
+      function drag(e) {
+        if (!isDragging) {
+          return;
+        }
+        passClick = true;
 
-			// box.style.left = newX + 'px';
-			box.style.top = newY + 'px';
-		}
+        var newX = e.clientX - startX + boxLeft;
+        var newY = e.clientY - startY + boxTop;
 
-		function stopDragging(e) {
-			isDragging = false;
-		}
-	</script>
-</body>
+        // 确保方块不会超出窗口边界
+        var maxX = window.innerWidth - box.offsetWidth;
+        var maxY = window.innerHeight - box.offsetHeight;
+        newX = Math.min(maxX, Math.max(0, newX));
+        newY = Math.min(maxY, Math.max(0, newY));
+
+        // box.style.left = newX + 'px';
+        box.style.top = newY + "px";
+      }
+
+      function stopDragging(e) {
+        isDragging = false;
+        // 拖动后200毫秒内丢掉点击事件
+        setTimeout(() => {
+          passClick = false;
+        }, 200);
+      }
+
+      // 添加点击事件监听器
+      box.addEventListener("click", () => {
+        // 防止拖动后触发点击事件
+        if (!passClick) {
+          alert("click");
+        }
+      });
+    </script>
+  </body>
 </html>

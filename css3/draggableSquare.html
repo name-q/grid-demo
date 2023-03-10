@@ -22,29 +22,27 @@
       box.style.position = "fixed";
       box.style.top = "50%";
       box.style.right = "0";
-      box.style.width = "100px";
-      box.style.height = "100px";
+      box.style.width = "10rem";
+      box.style.height = "10rem";
       box.style.backgroundColor = "red";
       box.style.backgroundSize = "cover";
       box.style.cursor = "move";
-      // 背景图片
-      const imgUrl =
-        "https://pt-mini.oss-cn-hangzhou.aliyuncs.com/userlogo/4ed1f2a97a957c0148506a1af3.jpg";
-      box.style.backgroundImage = `url(${imgUrl})`;
+      box.style.zIndex = "99999999";
+      box.style.backgroundImage =
+        "url('https://pt-mini.oss-cn-hangzhou.aliyuncs.com/userlogo/4ed1f2a97a957c0148506a1af3.jpg')";
 
-      // 拖动运行逻辑
       var isDragging = false;
       var startX, startY, boxLeft, boxTop;
       var passClick = false;
 
-      box.addEventListener("mousedown", startDragging);
-      document.addEventListener("mousemove", drag);
-      document.addEventListener("mouseup", stopDragging);
+      box.addEventListener("touchstart", startDragging);
+      document.addEventListener("touchmove", drag);
+      document.addEventListener("touchend", stopDragging);
 
       function startDragging(e) {
         isDragging = true;
-        startX = e.clientX;
-        startY = e.clientY;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
         boxLeft = box.offsetLeft;
         boxTop = box.offsetTop;
       }
@@ -55,8 +53,8 @@
         }
         passClick = true;
 
-        var newX = e.clientX - startX + boxLeft;
-        var newY = e.clientY - startY + boxTop;
+        var newX = e.touches[0].clientX - startX + boxLeft;
+        var newY = e.touches[0].clientY - startY + boxTop;
 
         // 确保方块不会超出窗口边界
         var maxX = window.innerWidth - box.offsetWidth;
@@ -64,7 +62,7 @@
         newX = Math.min(maxX, Math.max(0, newX));
         newY = Math.min(maxY, Math.max(0, newY));
 
-        // box.style.left = newX + 'px';
+        // box.style.left = newX + "px";
         box.style.top = newY + "px";
       }
 
